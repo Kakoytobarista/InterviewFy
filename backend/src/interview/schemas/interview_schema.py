@@ -1,19 +1,30 @@
+from typing import List
+
 from pydantic import BaseModel
 
-
-class SupportBase(BaseModel):
-    category_id: int
-    username: str
-    text: str
+from backend.src.interview.schemas.task_schema import TaskInterviewCreate
+from backend.src.schemas.base_schema import BaseSchema
 
 
-class SupportCreate(SupportBase):
+class InterviewBase(BaseSchema):
+    name: str
+    tasks: List[TaskInterviewCreate]
+
+
+class InterviewCreate(InterviewBase):
     pass
 
 
-class SupportUpdate(SupportBase):
+class InterviewUpdate(InterviewBase):
     pass
 
 
-class SupportResponse(SupportBase):
+class InterviewResponse(InterviewBase):
+    pass
+
+class SingleInterviewResponse(BaseModel):
     id: int
+    name: str
+
+class InterviewListResponse(BaseModel):
+    interviews: List[SingleInterviewResponse]

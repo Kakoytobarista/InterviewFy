@@ -1,9 +1,10 @@
-from src.repositories.sqlalchemy_repository import ModelType
-from src.services.base_service import BaseService
-from ..repositories.category_repository import category_repository
+from ..repositories.user_repository import user_repository
+from ..schemas.user_schema import UserCreate
+from ...repositories.sqlalchemy_repository import ModelType
+from ...services.base_service import BaseService
 
 
-class CategoryService(BaseService):
+class UserService(BaseService):
 
     async def filter(
             self,
@@ -19,8 +20,8 @@ class CategoryService(BaseService):
             offset=offset
         )
 
-    async def exists(self, name: str) -> bool:
-        return await self.repository.exists(name=name)
+    async def create_user(self, data: UserCreate) -> UserCreate:
+        return await self.repository.create_user(data=data)
 
 
-category_service = CategoryService(repository=category_repository)
+user_service = UserService(repository=user_repository)

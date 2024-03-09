@@ -1,0 +1,70 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.select-interview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding-top: 20px;
+  font-family: Arial, sans-serif; /* Используем стандартный шрифт */
+}
+
+.select-interview-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333; /* Чуть более темный цвет текста */
+}
+
+.select-interview-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Ширина формы */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.3); /* Толстая тень */
+}
+
+.select-interview-dropdown,
+.select-interview-input {
+  width: calc(100% - 10px);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.select-interview-button {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.select-interview-button:hover {
+  background-color: #0056b3;
+}
+
+.select-interview-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.select-interview-heading span {
+  color: #007bff; /* Синий цвет */
+}

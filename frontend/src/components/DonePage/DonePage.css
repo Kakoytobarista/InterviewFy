@@ -1,0 +1,97 @@
+.done-page-container {
+  max-width: 600px;
+  margin: 50px auto; /* Центрирование и небольшой отступ от верхнего края */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  font-family: Arial, sans-serif;
+}
+
+.done-page-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.done-page-values {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.done-page-value {
+  border: 2px solid #007bff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.done-page-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.done-page-button:hover {
+  background-color: #0056b3;
+}
+
+
+.done-page-container {
+  max-width: 600px;
+  margin: 50px auto; /* Центрирование и небольшой отступ от верхнего края */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  font-family: Arial, sans-serif;
+}
+
+.done-page-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.done-page-values {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.done-page-value {
+  border: 2px solid #007bff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.done-page-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.done-page-button:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для выделения вставленных значений */
+.done-page-heading strong,
+.done-page-values strong {
+  color: dodgerblue;
+  font-weight: bold;
+}

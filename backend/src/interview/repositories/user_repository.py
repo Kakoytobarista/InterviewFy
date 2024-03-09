@@ -1,14 +1,19 @@
+import logging
+
 from sqlalchemy import select
 from sqlalchemy.orm import load_only
 
 
-from ..schemas.user_schema import CategoryCreate, CategoryUpdate
+from ..schemas.user_schema import UserCreate, UserUpdate
 from ...config.database.db_helper import db_helper
 from ...models.user_model import UserModel
 from ...repositories.sqlalchemy_repository import SqlAlchemyRepository, ModelType
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-class UserRepository(SqlAlchemyRepository[ModelType, CategoryCreate, CategoryUpdate]):
+
+class UserRepository(SqlAlchemyRepository[ModelType, UserCreate, UserUpdate]):
 
     async def filter(
         self,
@@ -35,11 +40,9 @@ class UserRepository(SqlAlchemyRepository[ModelType, CategoryCreate, CategoryUpd
     async def all(self) -> list[ModelType] | None:
         return await self.filter()
 
-    async def create_user(self, ) -> bool:
+    async def create_user(self, data: UserCreate) -> UserModel:
         new_user = await self.create(data=data)
-        async with self._session_factory as session:
-            result = await session.execute(new_user)
-            return result.scalar() is not None
+        return new_user
 
 
-category_repository = UserRepository(model=UserModel, db_session=db_helper.get_db_session)
+user_repository = UserRepository(model=UserModel, db_session=db_helper.get_db_session)

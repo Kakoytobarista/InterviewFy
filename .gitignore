@@ -20,3 +20,21 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+backend/src/schemas/__pycache__/*
+backend/src/services/__pycache__/*
+backend/src/repositories/__pycache__/
+backend/src/models/__pycache__/
+backend/src/interview/services/__pycache__/
+backend/src/interview/schemas/__pycache__/
+backend/src/interview/repositories/__pycache__/
+backend/src/interview/controllers/__pycache__/
+backend/src/config/database/__pycache__/
+backend/src/config/__pycache__/
+backend/src/__pycache__/
+backend/__pycache__/
+/.idea/
+venv/
+/frontend/node_modules/
+/infra/data
+backend/.env

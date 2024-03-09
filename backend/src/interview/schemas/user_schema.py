@@ -1,22 +1,21 @@
-from pydantic import BaseModel
+from backend.src.schemas.base_schema import BaseSchema
 
 
-class CategoryBase(BaseModel):
-    name: str
+class UserBase(BaseSchema):
+    full_name: str
 
 
-class CategoryCreate(CategoryBase):
+class UserCreate(UserBase):
     pass
 
 
-class CategoryUpdate(CategoryBase):
+class UserUpdate(UserBase):
     pass
 
 
-class CategoryResponse(CategoryBase):
-    id: int
+class UserResponse(UserBase):
+    pass
 
 
-class CategoryListResponse(BaseModel):
-    id: int | None = None
-    name: str | None = None
+class UserListResponse(BaseSchema):
+    type: str | None = None
