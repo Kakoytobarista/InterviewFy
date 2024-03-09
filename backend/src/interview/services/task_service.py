@@ -6,20 +6,6 @@ from backend.src.services.base_service import BaseService
 
 class TaskService(BaseService):
 
-    async def filter(
-            self,
-            fields: list[str] | None = None,
-            order: list[str] | None = None,
-            limit: int | None = None,
-            offset: int | None = None
-    ) -> list[ModelType] | None:
-        return await self.repository.filter(
-            fields=fields,
-            order=order,
-            limit=limit,
-            offset=offset
-        )
-
     async def get_all_tasks(self) -> TaskListResponse:
         return await self.repository.get_all_tasks()
 

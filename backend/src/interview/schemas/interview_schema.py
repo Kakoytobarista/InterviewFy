@@ -15,12 +15,13 @@ class InterviewCreate(InterviewBase):
     pass
 
 
+class InterviewCreateResponse(InterviewCreate):
+    pass
+
+
 class InterviewUpdate(InterviewBase):
     pass
 
-
-class InterviewResponse(InterviewBase):
-    pass
 
 class SingleInterviewResponse(BaseModel):
     id: int

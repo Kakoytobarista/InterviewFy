@@ -16,7 +16,7 @@ async def create_task(data: TaskCreate) -> TaskCreate:
 
 
 @router.post("/get_all", response_model=TaskListResponse)
-async def get_all():
+async def get_all() -> TaskListResponse:
     try:
         return await task_service.get_all_tasks()
     except Exception as e:
@@ -24,7 +24,7 @@ async def get_all():
 
 
 @router.get("/get_all/{interview_id}", response_model=TaskListResponse)
-async def get_all_by_interview_id(interview_id: int):
+async def get_all_by_interview_id(interview_id: int) -> TaskListResponse:
     try:
         return await task_service.get_all_tasks_by_interview_id(interview_id=interview_id)
     except Exception as e:

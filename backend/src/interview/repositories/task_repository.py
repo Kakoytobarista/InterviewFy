@@ -2,7 +2,7 @@ from sqlalchemy import select
 
 from ..schemas.task_schema import TaskCreate, TaskUpdate, TaskListResponse, TaskResponse
 from ...config.database.db_helper import db_helper
-from ...models.interview_model import TaskModel, InterviewModel, interview_task_association
+from ...models.interview_model import TaskModel, interview_task_association
 from ...repositories.sqlalchemy_repository import SqlAlchemyRepository, ModelType
 
 
@@ -27,7 +27,7 @@ class TaskRepository(SqlAlchemyRepository[ModelType, TaskCreate, TaskUpdate]):
             tasks = [TaskResponse(name=row.name, content=row.content) for row in result.scalars().all()]
             return TaskListResponse(tasks=tasks)
 
-    async def create_task(self, data: TaskCreate) -> bool:
+    async def create_task(self, data: TaskCreate) -> TaskCreate:
         new_task = await self.create(data=data)
         return new_task
 

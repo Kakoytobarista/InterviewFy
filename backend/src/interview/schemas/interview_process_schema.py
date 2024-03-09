@@ -11,3 +11,8 @@ class InterviewProcessResponse(BaseSchema):
 class InterviewProcessCreate(BaseSchema):
     interview_id: int
     full_name: str
+
+
+class InterviewProcessCreateResponse(BaseSchema):
+    interview_id: int
+    user_id: int

@@ -8,6 +8,10 @@ class InterviewStatusBase(BaseSchema):
     score: float | None = 0
 
 
+class InterviewStatusResponse(InterviewStatusBase):
+    pass
+
+
 class InterviewStatusCreate(InterviewStatusBase):
     pass
 
@@ -15,3 +19,6 @@ class InterviewStatusCreate(InterviewStatusBase):
 class InterviewStatusUpdate(BaseSchema):
     is_passed: bool = False
     score: float
+
+class InterviewStatusUpdateResponse(InterviewStatusUpdate):
+    pass

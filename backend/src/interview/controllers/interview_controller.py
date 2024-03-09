@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST
 
-from backend.src.interview.schemas.interview_schema import InterviewListResponse, InterviewCreate
+from backend.src.interview.schemas.interview_schema import (InterviewCreate,
+                                                            InterviewCreateResponse, InterviewListResponse)
 from backend.src.interview.services.interview_service import interview_service
 
 router = APIRouter(prefix='/interview', tags=["interview"])
@@ -12,12 +13,12 @@ async def get_all():
     try:
         return await interview_service.get_all_interviews()
     except Exception as e:
-        raise HTTPException(HTTP_400_BAD_REQUEST, str(e))
+        raise HTTPException(HTTP_400_BAD_REQUEST, str(e.orig))
 
 
-@router.post("/create_interview", response_model=InterviewCreate)
-async def create_interview(data: InterviewCreate) -> InterviewCreate:
+@router.post("/create_interview", response_model=InterviewCreateResponse)
+async def create_interview(data: InterviewCreate) -> InterviewCreateResponse:
     try:
-        return await interview_service.update_interview_status(data)
+        return await interview_service.create_interview(data)
     except Exception as e:
         raise HTTPException(HTTP_400_BAD_REQUEST, str(e))

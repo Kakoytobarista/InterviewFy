@@ -67,7 +67,7 @@ class SqlAlchemyRepository(AbstractRepository, Generic[ModelType, CreateSchemaTy
             stmt = stmt.limit(limit).offset(offset)
 
             rows = await session.execute(stmt)
-            return rows.all()
+            return rows.scalars().all()
 
     async def get_multi_with_join(
             self,
@@ -86,4 +86,4 @@ class SqlAlchemyRepository(AbstractRepository, Generic[ModelType, CreateSchemaTy
             stmt = stmt.limit(limit).offset(offset)
 
             rows = await session.execute(stmt)
-            return rows.all()
+            return rows.scalars().all()

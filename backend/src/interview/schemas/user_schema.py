@@ -8,14 +8,8 @@ class UserBase(BaseSchema):
 class UserCreate(UserBase):
     pass
 
+class UserCreateResponse(UserCreate):
+    pass
 
 class UserUpdate(UserBase):
     pass
-
-
-class UserResponse(UserBase):
-    pass
-
-
-class UserListResponse(BaseSchema):
-    type: str | None = None
