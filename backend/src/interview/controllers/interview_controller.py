@@ -13,7 +13,7 @@ async def get_all():
     try:
         return await interview_service.get_all_interviews()
     except Exception as e:
-        raise HTTPException(HTTP_400_BAD_REQUEST, str(e.orig))
+        raise HTTPException(HTTP_400_BAD_REQUEST, str(e))
 
 
 @router.post("/create_interview", response_model=InterviewCreateResponse)

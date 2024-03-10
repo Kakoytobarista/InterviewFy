@@ -17,8 +17,10 @@ async def create_interview_process(data: InterviewProcessCreate) -> InterviewPro
         user_data = await user_service.create_user(UserCreate(full_name=data.full_name))
         user_id = user_data.id
         interview_status = await interview_status_service.create_interview_status(
-            InterviewProcessCreateResponse(interview_id=data.interview_id,
-                                           user_id=user_id))
-        return interview_status
+            InterviewStatusCreate(interview_id=data.interview_id,
+                                  user_id=user_id))
+        return InterviewProcessCreateResponse(id=interview_status.id,
+                                              interview_id=interview_status.interview_id,
+                                              user_id=user_id)
     except Exception as e:
         raise HTTPException(HTTP_400_BAD_REQUEST, str(e))

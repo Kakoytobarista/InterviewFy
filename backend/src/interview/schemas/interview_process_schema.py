@@ -5,7 +5,6 @@ class InterviewProcessResponse(BaseSchema):
     id: int
     interview_id: int
     user_id: int
-    full_name: str
 
 
 class InterviewProcessCreate(BaseSchema):
@@ -14,5 +13,8 @@ class InterviewProcessCreate(BaseSchema):
 
 
 class InterviewProcessCreateResponse(BaseSchema):
+    id: int
     interview_id: int
     user_id: int
+    score: float = 0
+    is_passed: bool = False

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SelectInterviewPage.css'; // Подключаем файл стилей
+import './SelectInterviewPage.css';
 
 function SelectInterviewPage() {
   const [interviews, setInterviews] = useState([]);
   const [selectedInterview, setSelectedInterview] = useState('');
   const [candidateName, setCandidateName] = useState('');
-  const navigate = useNavigate(); // Заменяем useHistory на useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchInterviews();
+    clearLocalStorage();
   }, []);
 
   const fetchInterviews = async () => {
@@ -18,11 +19,18 @@ function SelectInterviewPage() {
       const data = await response.json();
       setInterviews(data.interviews); // Предположим, что данные приходят в формате { interviews: [...] }
 
-      // Сохраняем данные о всех интервью в localStorage
       localStorage.setItem('interviews', JSON.stringify(data.interviews));
     } catch (error) {
       console.error('Error fetching interviews:', error);
     }
+  };
+
+  const clearLocalStorage = () => {
+    const keys = Object.keys(localStorage);
+    const interviewKeys = keys.filter(key => key !== 'interviews');
+    interviewKeys.forEach(key => {
+      localStorage.removeItem(key);
+    });
   };
 
   const startInterview = async () => {
@@ -74,9 +82,9 @@ function SelectInterviewPage() {
 
   return (
     <div className="select-interview-container">
-  <h1 className="select-interview-heading">Interview<span>Fy</span></h1>
+      <h1 className="select-interview-heading">Interview<span>Fy</span></h1>
       <div className="select-interview-form">
-      <select
+        <select
           className="select-interview-dropdown"
           value={selectedInterview}
           onChange={(e) => setSelectedInterview(e.target.value)}
