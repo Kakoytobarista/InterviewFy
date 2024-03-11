@@ -1,6 +1,6 @@
-from backend.src.interview.repositories.interview_status_repository import interview_status_repository
-from backend.src.interview.schemas.interview_status import InterviewStatusUpdate, InterviewStatusResponse
-from backend.src.services.base_service import BaseService
+from src.interview.repositories.interview_status_repository import interview_status_repository
+from src.interview.schemas.interview_status import InterviewStatusUpdate, InterviewStatusResponse
+from src.services.base_service import BaseService
 
 
 class InterviewStatusService(BaseService):

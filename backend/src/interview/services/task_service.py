@@ -1,7 +1,7 @@
-from backend.src.interview.repositories.task_repository import task_repository
-from backend.src.interview.schemas.task_schema import TaskCreate, TaskListResponse, TaskResponse
-from backend.src.repositories.sqlalchemy_repository import ModelType
-from backend.src.services.base_service import BaseService
+from src.interview.repositories.task_repository import task_repository
+from src.interview.schemas.task_schema import TaskCreate, TaskListResponse, TaskResponse
+from src.repositories.sqlalchemy_repository import ModelType
+from src.services.base_service import BaseService
 
 
 class TaskService(BaseService):

@@ -1,5 +1,5 @@
 import logging
-from typing import Type, TypeVar, Optional, Generic, Callable, Any, Sequence, Dict
+from typing import Type, TypeVar, Optional, Generic, Callable, Any, Sequence, Dict, Union
 
 from pydantic import BaseModel
 from sqlalchemy import delete, select, update, Row, RowMapping
@@ -48,14 +48,14 @@ class SqlAlchemyRepository(AbstractRepository, Generic[ModelType, CreateSchemaTy
             await session.execute(delete(self.model).filter_by(**filters))
             await session.commit()
 
-    async def get_single(self, **filters) -> Optional[ModelType] | None:
+    async def get_single(self, **filters) -> Optional[Union[ModelType, None]]:
         async with self._session_factory() as session:
             row = await session.execute(select(self.model).filter_by(**filters))
             return row.scalar_one_or_none()
 
     async def get_multi(
             self,
-            filters: Dict[str, Any] | None = None,
+            filters: Optional[Dict[str, Any]] = None,
             order: str = "id",
             limit: int = 100,
             offset: int = 0
@@ -73,7 +73,7 @@ class SqlAlchemyRepository(AbstractRepository, Generic[ModelType, CreateSchemaTy
             self,
             join_model: Type[Any],
             on_condition: Any,
-            filters: Dict[str, Any] | None = None,
+            filters: Optional[Dict[str, Any]] = None,
             order: str = "id",
             limit: int = 100,
             offset: int = 0

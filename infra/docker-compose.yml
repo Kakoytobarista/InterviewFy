@@ -1,6 +1,19 @@
 version: '3'
 
 services:
+  migrate:
+    image: postgres:latest
+    command: >
+      bash -c "sleep 10 && psql -h db -U postgres -d db -f /dump.sql"
+    volumes:
+      - ./dump.sql:/dump.sql
+    environment:
+      - PGPASSWORD=postgres
+    depends_on:
+      - db
+    networks:
+      - default
+
   db:
     image: postgres:latest
     restart: always
@@ -8,59 +21,40 @@ services:
       POSTGRES_DB: db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    volumes:
-      - ./data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     expose:
       - 5432
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres -d db" ]
-      interval: 20s
-      timeout: 5s
-      retries: 5
+    networks:
+      - default
 
-  nginx:
-    image: nginx:latest
-    restart: always
-    ports:
-      - "80:80"
+  interviewfy_back:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
     expose:
-      - 80
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-#
-#  app:
-#    environment:
-#      - TEST_ENVIRONMENT=0
-#    build:
-#      context: ../app
-#    restart: always
-#    ports:
-#      - "8000:8000"
-#    expose:
-#      - 8000
-#    depends_on:
-#      db:
-#        condition: service_healthy
-#    command: ["sh", "-c", "sleep 10 && uvicorn main:app --host 0.0.0.0 --port 8000"]
-#
-#
-#  frontend:
-#    build:
-#      context: ../frontend
-#    restart: always
-#    ports:
-#      - "3000:3000"
-#    depends_on:
-#      - app
-#
-#  tests:
-#    environment:
-#      - TEST_ENVIRONMENT=1
-#    build:
-#      context: ../app
-#    depends_on:
-#      db:
-#        condition: service_healthy
-#    command: [ "pytest", "tests" ]
+      - 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/backend
+    depends_on:
+      - db
+    networks:
+      - default
+
+  interviewfy_front:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - interviewfy_back
+    networks:
+      - default
+
+networks:
+  default:
