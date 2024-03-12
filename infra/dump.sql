@@ -238,7 +238,8 @@ COPY public.alembic_version (version_num) FROM stdin;
 --
 
 COPY public.interview (name, id) FROM stdin;
-Python Developer	2
+Software Engineer in Test	3
+Python Developer	4
 \.
 
 
@@ -247,6 +248,7 @@ Python Developer	2
 --
 
 COPY public.interview_status (interview_id, user_id, is_passed, score, id) FROM stdin;
+3	11	f	11	11
 \.
 
 
@@ -255,17 +257,27 @@ COPY public.interview_status (interview_id, user_id, is_passed, score, id) FROM 
 --
 
 COPY public.interview_task_association (interview_id, task_id) FROM stdin;
-2	4
-2	5
-2	6
-2	7
-2	8
-2	8
-2	9
-2	10
-2	11
-2	12
-2	13
+3	4
+3	5
+3	9
+3	14
+3	15
+3	16
+3	17
+3	18
+3	19
+3	20
+3	21
+4	4
+4	5
+4	6
+4	7
+4	8
+4	8
+4	10
+4	11
+4	12
+4	13
 \.
 
 
@@ -284,6 +296,14 @@ SQL and NoSQL databases	You should explain what an SQL database is. What SQL dat
 DB indexes	What are indexes do you know? Answer in detail.	11
 Transactions in database.	What is it transaction and when you should use it?	12
 Queries optimization	How do you optimize queries in a database?	13
+Page object module	What is it POM?	14
+Page Elements	What is it Page Elements?	15
+Pyramid of testing	What is it Pyramid of testing?	16
+Pytest	What is it Pytest, and how it use?	17
+Fixtures	What is it @fixtures in pytest context?	18
+Fixture scope	How do you use a fixture if you want to execute some code after a test function is finished?	19
+Architecture of the test Project (UI)	You should explain how you would develop the architecture for a test repository.	20
+Handle elements in DOM	You should explain how you would handle elements and write asserts for PO element with locator which point to list of elements.	21
 \.
 
 
@@ -292,6 +312,8 @@ Queries optimization	How do you optimize queries in a database?	13
 --
 
 COPY public."user" (full_name, role, id) FROM stdin;
+Aslan GurbanovOgli	candidate	10
+Aslan Gurbanov ogli2	candidate	11
 \.
 
 
@@ -299,28 +321,28 @@ COPY public."user" (full_name, role, id) FROM stdin;
 -- Name: interview_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.interview_id_seq', 2, true);
+SELECT pg_catalog.setval('public.interview_id_seq', 4, true);
 
 
 --
 -- Name: interview_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.interview_status_id_seq', 8, true);
+SELECT pg_catalog.setval('public.interview_status_id_seq', 11, true);
 
 
 --
 -- Name: task_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.task_id_seq', 13, true);
+SELECT pg_catalog.setval('public.task_id_seq', 21, true);
 
 
 --
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.user_id_seq', 8, true);
+SELECT pg_catalog.setval('public.user_id_seq', 11, true);
 
 
 --
