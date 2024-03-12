@@ -12,8 +12,6 @@ from .db_config import settings_db
 
 import logging
 
-from ...models.base_model import Base
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

@@ -12,7 +12,7 @@ load_dotenv()
 
 class TelegramAlert:
     def __init__(self):
-        self.bot = telebot.TeleBot(os.getenv('TELEGRAM_TOKEN'))
+        self.bot = telebot.TeleBot(os.getenv('TELEGRAM_TOKEN'), 'None')
 
     def send_alert_in_chat(self, text, chat_id=None):
         chat_id = chat_id if chat_id else os.getenv('CHAT_ID')

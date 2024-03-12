@@ -38,3 +38,12 @@ venv/
 /frontend/node_modules/
 /infra/data
 backend/.env
+
+backend/src/interview/__pycache__/
+backend/src/alerts/__pycache__/
+.env
+backend/alembic/versions/__pycache__/95f7b3bce95a_.cpython-311.pyc
+backend/alembic/versions/95f7b3bce95a_.py
+
+backend/alembic/versions/__pycache__/
+

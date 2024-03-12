@@ -1,10 +1,10 @@
 import logging
 
-from backend.src.config.database.db_helper import db_helper
-from backend.src.interview.schemas.interview_schema import InterviewCreate, InterviewUpdate, InterviewListResponse, \
+from src.config.database.db_helper import db_helper
+from src.interview.schemas.interview_schema import InterviewCreate, InterviewUpdate, InterviewListResponse, \
     SingleInterviewResponse
-from backend.src.models.interview_model import InterviewModel, TaskModel
-from backend.src.repositories.sqlalchemy_repository import SqlAlchemyRepository, ModelType
+from src.models.interview_model import InterviewModel, TaskModel
+from src.repositories.sqlalchemy_repository import SqlAlchemyRepository, ModelType
 
 
 logging.basicConfig(level=logging.INFO)

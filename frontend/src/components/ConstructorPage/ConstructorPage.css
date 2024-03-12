@@ -1,0 +1,89 @@
+.constructor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.interview-input {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.error-popup {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.drop-zone {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #aaa;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-list-container {
+  overflow-y: auto;
+  max-height: 300px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.task-list {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.task {
+  background-color: #f0f0f0;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip; /* Заменяем ellipsis на clip */
+}
+
+.selected-task {
+  background-color: #ccc;
+  padding: 5px;
+  margin: 5px;
+  max-width: 100px; /* Устанавливаем максимальную ширину выбранной таски */
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip; /* Заменяем ellipsis на clip */
+}
+
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 15px 15px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -6,11 +6,11 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
-    DB_ECHO: bool
-    PROJECT_NAME: str
-    VERSION: str
-    DEBUG: bool
-    CORS_ALLOWED_ORIGINS: str
+    DB_ECHO: bool = True
+    PROJECT_NAME: str = 'InterviewFy'
+    VERSION: str = '1.0.0'
+    DEBUG: bool = True
+    CORS_ALLOWED_ORIGINS: str = 'http://localhost'
 
 
 settings = Settings()

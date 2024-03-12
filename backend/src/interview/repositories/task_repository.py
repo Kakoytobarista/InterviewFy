@@ -1,3 +1,5 @@
+import logging
+
 from sqlalchemy import select
 
 from ..schemas.task_schema import TaskCreate, TaskUpdate, TaskListResponse, TaskResponse
@@ -6,13 +8,17 @@ from ...models.interview_model import TaskModel, interview_task_association
 from ...repositories.sqlalchemy_repository import SqlAlchemyRepository, ModelType
 
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
 class TaskRepository(SqlAlchemyRepository[ModelType, TaskCreate, TaskUpdate]):
 
     async def get_all_tasks(self) -> TaskListResponse:
         tasks = await self.get_multi()
         task_responses = []
         for task in tasks:
-            task_response = TaskResponse(name=task.name, content=task.content)
+            task_response = TaskResponse(id=task.id, name=task.name, content=task.content)
             task_responses.append(task_response)
         return TaskListResponse(tasks=task_responses)
 
@@ -24,7 +30,8 @@ class TaskRepository(SqlAlchemyRepository[ModelType, TaskCreate, TaskUpdate]):
                 .where(interview_task_association.c.interview_id == interview_id)
             )
             result = await session.execute(stmt)
-            tasks = [TaskResponse(name=row.name, content=row.content) for row in result.scalars().all()]
+            logger.info(f"Tasks with interview_id: {interview_id}, tasks: {result}")
+            tasks = [TaskResponse(id=row.id, name=row.name, content=row.content) for row in result.scalars().all()]
             return TaskListResponse(tasks=tasks)
 
     async def create_task(self, data: TaskCreate) -> TaskCreate:

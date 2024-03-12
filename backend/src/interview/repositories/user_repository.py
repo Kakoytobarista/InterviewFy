@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Sequence
+from typing import Any, Sequence, Optional
 
 from sqlalchemy import Row, RowMapping
 
@@ -19,8 +19,16 @@ class UserRepository(SqlAlchemyRepository[ModelType, UserCreate, UserUpdate]):
         return await self.get_multi()
 
     async def create_user(self, data: UserCreate) -> UserModel:
-        new_user = await self.create(data=data)
-        return new_user
+        existing_user = await self.get_existing_user(data)
+        if existing_user:
+            return existing_user
+        else:
+            new_user = await self.create(data=data)
+            return new_user
+
+    async def get_existing_user(self, data: UserCreate) -> Optional[UserModel]:
+        existing_user = await self.get_single(full_name=data.full_name)
+        return existing_user
 
 
 user_repository = UserRepository(model=UserModel, db_session=db_helper.get_db_session)

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST
 
-from backend.src.interview.schemas.interview_schema import (InterviewCreate,
-                                                            InterviewCreateResponse, InterviewListResponse)
-from backend.src.interview.services.interview_service import interview_service
+from src.interview.schemas.interview_schema import (InterviewCreate,
+                                                    InterviewCreateResponse, InterviewListResponse)
+from src.interview.services.interview_service import interview_service
 
 router = APIRouter(prefix='/interview', tags=["interview"])
 

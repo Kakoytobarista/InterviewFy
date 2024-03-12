@@ -4,11 +4,11 @@ services:
   migrate:
     image: postgres:latest
     command: >
-      bash -c "sleep 10 && psql -h db -U postgres -d db -f /dump.sql"
+      bash -c "sleep 10 && psql -h db -U $POSTGRES_USER -d $POSTGRES_DB -f /dump.sql"
     volumes:
       - ./dump.sql:/dump.sql
     environment:
-      - PGPASSWORD=postgres
+      - PGPASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db
     networks:
@@ -18,9 +18,9 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      POSTGRES_DB: db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     expose:

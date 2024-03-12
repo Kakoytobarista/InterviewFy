@@ -2,8 +2,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from backend.src.interview.schemas.task_schema import TaskInterviewCreate
-from backend.src.schemas.base_schema import BaseSchema
+from src.interview.schemas.task_schema import TaskInterviewCreate
+from src.schemas.base_schema import BaseSchema
 
 
 class InterviewBase(BaseSchema):
