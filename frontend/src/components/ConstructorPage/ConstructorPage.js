@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './ConstructorPage.css';
 
 const ConstructorPage = () => {
   const [interviewName, setInterviewName] = useState('');
   const [tasks, setTasks] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState([]);
-  const [error, setError] = useState('');
   const taskListRef = useRef(null);
 
   useEffect(() => {
@@ -69,7 +70,7 @@ const ConstructorPage = () => {
 
   const createInterview = () => {
     if (!interviewName) {
-      setError('Please enter interview name');
+      toast.error('Please enter interview name');
       return;
     }
 
@@ -95,9 +96,7 @@ const ConstructorPage = () => {
         onChange={handleInputChange}
         className="interview-input"
       />
-      {error && (
-        <div className="error-popup">{error}</div>
-      )}
+      <ToastContainer />
       <div className="drop-zone"
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}>

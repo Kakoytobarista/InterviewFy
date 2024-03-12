@@ -19,11 +19,6 @@ class ConfigDataBase(BaseSettings):
 
     @property
     def database_url(self) -> Optional[PostgresDsn]:
-        logger.info(self.POSTGRES_USER)
-        logger.info(self.POSTGRES_PASSWORD)
-        logger.info(self.POSTGRES_HOST)
-        logger.info(self.POSTGRES_PORT)
-        logger.info(self.POSTGRES_DB)
         return (
             f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@"
             f"{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"

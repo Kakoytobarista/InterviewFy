@@ -5,10 +5,10 @@ import './Header.css';
 const Header = () => {
   return (
     <div className="header">
-      <div className="logo">
+      <Link to="/" className="logo"> {}
         <span className="white-text">Interview</span>
         <span className="black-text">Fy</span>
-      </div>
+      </Link>
       <nav className="nav-links">
         <Link to="/interview/constructor" className="nav-link">Interview Constructor</Link>
         <Link to="/interview/select" className="nav-link">Interview Select</Link>

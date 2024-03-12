@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './SelectInterviewPage.css';
 
 function SelectInterviewPage() {
@@ -17,8 +19,7 @@ function SelectInterviewPage() {
     try {
       const response = await fetch('http://0.0.0.0:8000/interview/get_all');
       const data = await response.json();
-      setInterviews(data.interviews); // Предположим, что данные приходят в формате { interviews: [...] }
-
+      setInterviews(data.interviews);
       localStorage.setItem('interviews', JSON.stringify(data.interviews));
     } catch (error) {
       console.error('Error fetching interviews:', error);
@@ -35,10 +36,9 @@ function SelectInterviewPage() {
 
   const startInterview = async () => {
     try {
-      console.log('Selected Interview:', selectedInterview);
-      console.log('Candidate Name:', candidateName);
       if (!selectedInterview || !candidateName) {
-        console.error('Please select an interview and enter candidate name.');
+        // Используем react-toastify для показа попапа с сообщением
+        toast.error('Please select an interview and enter candidate name.');
         return;
       }
 
@@ -73,7 +73,7 @@ function SelectInterviewPage() {
 
         navigate(`/interview/${selectedInterview}/start`);
       } else {
-        console.error('Failed to start interview');
+        toast.error('Failed to start interview');
       }
     } catch (error) {
       console.error('Error starting interview:', error);
@@ -107,6 +107,8 @@ function SelectInterviewPage() {
           START
         </button>
       </div>
+      {/* ToastContainer для отображения попапов */}
+      <ToastContainer />
     </div>
   );
 }
